@@ -1,0 +1,12 @@
+table-1 -> users -> id,name,email,email_verified_at,password
+
+table-2 -> user_details -> id , user_id, phone , address, pincode, city, state , country.
+
+table-3 -> educational_details -> id, user_id, program, batch ,passing_year, university.
+
+table-4 -> country -> id,name, country_code
+
+
+simple table(serach & pagination) - yajra table
+
+factory & seeders (multiple table relationship)

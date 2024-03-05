@@ -1,0 +1,19 @@
+--------------------------LEARN-----------------------------
+
+4/3/2024
+- interaction & index -> default sr no in laravel.
+- forelse -> use this instand of foreach 
+
+5/3/2024
+-factories -> name as same as model name and suffix Factory ex. PostFactory.
+- factory -> provides to intract fake data with relation.
+- seeders ->provides intract real data with single table.
+
+- php artisan migrate:fresh -> firstly drop all table and then create all table. 
+- php artisan db:seed -> enter fake data
+- php artisan migrate:fresh --seed -> remove previous data and add new data
+ 
+-Steps -> 1. first create table and migrate it 
+	2. create model 
+	3. create factory
+	4. query in DatabseSeeder class
