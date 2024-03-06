@@ -12,7 +12,21 @@
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
-
+    <!-- datatable -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.12/js/dataTables.bootstrap.min.js"></script>       
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.12/css/dataTables.bootstrap.min.css" />
+    
+    <link href="https://cdn.datatables.net/buttons/1.5.6/css/buttons.dataTables.min.css">
+    <script src="https://code.jquery.com/jquery-3.3.1.js" type="text/javascript"> </script>
+    <script src="https://cdn.datatables.net/buttons/1.5.6/js/dataTables.buttons.min.js" type="text/javascript"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js" type="text/javascript"></script>
+    <script src="https://cdn.datatables.net/buttons/1.5.6/js/buttons.html5.min.js" type="text/javascript"></script>
+    <script src="https://cdn.datatables.net/select/1.3.0/js/dataTables.select.min.js" type="text/javascript"></script>
+    <script src="https://cdn.datatables.net/buttons/1.5.6/js/buttons.flash.min.js" type="text/javascript"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js" type="text/javascript"></script>
+    
     <!-- Scripts -->
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
 </head>
@@ -36,7 +50,7 @@
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ms-auto">
                         <!-- Authentication Links -->
-                        @guest
+                   <?php /*    @guest
                             @if (Route::has('login'))
                                 <li class="nav-item">
                                     <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
@@ -66,7 +80,22 @@
                                     </form>
                                 </div>
                             </li>
-                        @endguest
+                        @endguest */ ?>
+                        @if (Route::has('user-list'))
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('user-list') }}">{{ __('Simple table') }}</a>
+                            </li>
+                        @endif
+                        @if (Route::has('user.datatable'))
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('user.datatable') }}">{{ __('Default Datatable') }}</a>
+                            </li>
+                        @endif
+                        @if (Route::has('user-ajaxlist'))
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('user-ajaxlist') }}">{{ __('Ajax Datatable') }}</a>
+                            </li>
+                        @endif
                     </ul>
                 </div>
             </div>

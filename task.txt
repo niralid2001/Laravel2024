@@ -7,6 +7,10 @@ table-3 -> educational_details -> id, user_id, program, batch ,passing_year, uni
 table-4 -> country -> id,name, country_code
 
 
-simple table(serach & pagination) - yajra table
+-> simple table(serach & pagination) - yajra table
 
-factory & seeders (multiple table relationship)
+-> factory & seeders (multiple table relationship)
+
+remaining -> yajra -> sr.no display, pdf error , relation table searching and fillter.
+
+-> datatable using ajax.

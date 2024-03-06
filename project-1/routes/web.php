@@ -13,14 +13,16 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
 
 Route::get('user', [App\Http\Controllers\UserController::class,'index'])->name('user');
 Route::get('user-list', [App\Http\Controllers\UserController::class,'UserList'])->name('user-list');
 Route::post('user-create', [App\Http\Controllers\UserController::class,'createUser'])->name('user-create');
-Route::get('user-table', [App\Http\Controllers\UserController::class,'dataTable'])->name('user.datatable');
+Route::get('/', [App\Http\Controllers\UserController::class,'dataTable'])->name('user.datatable');
+Route::get('user-ajaxlist', [App\Http\Controllers\UserController::class,'ajaxList'])->name('user-ajaxlist');
+Route::get('user-ajaxtable', [App\Http\Controllers\UserController::class,'ajaxTable'])->name('user-ajaxtable');
 
 Auth::routes();
 

@@ -29,19 +29,23 @@ class UsersDataTable extends DataTable
             //     return $index;
             // })
             ->addColumn('phone', function($row) {
-                $userdetail = UserDetail::select('phone')->where('user_id', $row->id )->pluck('phone')->toArray();
+                $userdetail = $row->userDetail->phone;
+                // $userdetail = UserDetail::select('phone')->where('user_id', $row->id )->pluck('phone')->toArray();
                 return $userdetail;
             })
             ->addColumn('address', function($row) {
-                $userdetail = UserDetail::select('address')->where('user_id', $row->id )->pluck('address')->toArray();
+                $userdetail = $row->userDetail->address;
+                // $userdetail = UserDetail::select('address')->where('user_id', $row->id )->pluck('address')->toArray();
                 return $userdetail;
             })
             ->addColumn('pincode', function($row) {
-                $userdetail = UserDetail::select('pincode')->where('user_id', $row->id )->pluck('pincode')->toArray();
+                $userdetail = $row->userDetail->pincode;
+                // $userdetail = UserDetail::select('pincode')->where('user_id', $row->id )->pluck('pincode')->toArray();
                 return $userdetail;
             })
             ->addColumn('program', function($row) {
-                $educationaldetail = EducationalDetail::select('program')->where('user_id', $row->id )->pluck('program')->toArray();
+                $educationaldetail = $row->educationalDetail->program;
+                // $educationaldetail = EducationalDetail::select('program')->where('user_id', $row->id )->pluck('program')->toArray();
                 return $educationaldetail;
             })
             ->formatColumn(['created_at', 'updated_at'], DateFormatter::class)
@@ -65,13 +69,13 @@ class UsersDataTable extends DataTable
                     ->setTableId('users-table')
                     ->columns($this->getColumns())
                     ->minifiedAjax()
-                    // ->dom('Bfrtip')
+                    ->dom('Bfrtip')
                     ->orderBy(1)
                     ->selectStyleSingle()
                     ->buttons([
                         Button::make('excel'),
                         Button::make('csv'),
-                        Button::make('pdf'),
+                        // Button::make('pdf'),
                         Button::make('print'),
                         Button::make('reset'),
                         Button::make('reload')

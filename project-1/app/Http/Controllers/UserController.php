@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use  App\Models\User;
 use App\Models\UserDetail;
 use App\Models\EducationalDetail;
+use DataTables;
 
 use App\DataTables\UsersDataTable;
 
@@ -62,5 +63,48 @@ class UserController extends Controller
     {
         return $dataTable->render('user.datatable');
     }
+
+    public function ajaxList()
+    {
+        return view('user.ajaxtable');
+    }
     
+    public function ajaxTable()
+    {
+        $user = User::with('userDetail', 'educationalDetail')->get();
+        return Datatables::of($user)
+        ->addColumn('phone', function ($row) {
+            return isset($row->userDetail->phone) ? $row->userDetail->phone : '';
+        })
+        ->addColumn('address', function ($row) {
+            return isset($row->userDetail->address) ? $row->userDetail->address : '';
+        })
+        ->addColumn('city', function ($row) {
+            return isset($row->userDetail->city) ? $row->userDetail->city : '';
+        })
+        ->addColumn('pincode', function ($row) {
+            return isset($row->userDetail->pincode) ? $row->userDetail->pincode : '';
+        })
+        ->addColumn('state', function ($row) {
+            return isset($row->userDetail->state) ? $row->userDetail->state : '';
+        })
+        ->addColumn('country', function ($row) {
+            return isset($row->userDetail->country) ? $row->userDetail->country : '';
+        })
+        ->addColumn('program', function ($row) {
+            return isset($row->educationalDetail->program) ? $row->educationalDetail->program : '';
+        })
+        ->addColumn('batch', function ($row) {
+            return isset($row->educationalDetail->batch) ? $row->educationalDetail->batch : '';
+        })
+        ->addColumn('passing_year', function ($row) {
+            return isset($row->educationalDetail->passing_year) ? $row->educationalDetail->passing_year : '';
+        })
+        ->addColumn('university', function ($row) {
+            return isset($row->educationalDetail->university) ? $row->educationalDetail->university : '';
+        })
+        ->rawColumns(['phone','address','city','pincode','state','country','program','batch','passing_year','university'])
+        ->make(true);
+    }
+      
 }
