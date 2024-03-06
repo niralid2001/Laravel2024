@@ -5,6 +5,18 @@
         <div class="card">
             <div class="card-header">Ajax DataTable</div>
             <div class="card-body">
+                    <a class="btn btn-warning"
+                       href="{{ route('export') }}">
+                              Export Excel Data
+                    </a>
+                    <a class="btn btn-success"
+                       href="{{ route('export-csv') }}">
+                              Export Csv Data
+                    </a>
+                    <a class="btn btn-danger"
+                       href="{{ route('export-pdf') }}">
+                              Export Pdf Data
+                    </a>
                 <table id="dataTable" class="table table-bordered table-hover">
                     <thead>
                         <th>Sr No</th>
@@ -49,10 +61,6 @@
                {data: 'passing_year'},
                {data: 'university'},
            ],
-            dom: 'Blfrtip',
-            buttons: [
-                'copy', 'excel', 'csv','pdf','print','reload'
-            ],
         });
     });
 </script>

@@ -7,7 +7,9 @@ use  App\Models\User;
 use App\Models\UserDetail;
 use App\Models\EducationalDetail;
 use DataTables;
-
+use App\Exports\ExportUser;
+use Excel;
+use Barryvdh\DomPDF\Facade\Pdf;
 use App\DataTables\UsersDataTable;
 
 class UserController extends Controller
@@ -106,5 +108,17 @@ class UserController extends Controller
         ->rawColumns(['phone','address','city','pincode','state','country','program','batch','passing_year','university'])
         ->make(true);
     }
-      
+    
+    public function exportUsers(Request $request){
+        return Excel::download(new ExportUser, 'users.xlsx');
+    }
+    public function exportCsvUsers(Request $request){
+        return Excel::download(new ExportUser, 'users.csv');
+    }
+    public function exportPdfUsers(Request $request){
+     
+        $pdf = Pdf::loadView('user.pdf');
+     
+        return $pdf->download();
+    }
 }

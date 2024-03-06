@@ -23,6 +23,9 @@ Route::post('user-create', [App\Http\Controllers\UserController::class,'createUs
 Route::get('/', [App\Http\Controllers\UserController::class,'dataTable'])->name('user.datatable');
 Route::get('user-ajaxlist', [App\Http\Controllers\UserController::class,'ajaxList'])->name('user-ajaxlist');
 Route::get('user-ajaxtable', [App\Http\Controllers\UserController::class,'ajaxTable'])->name('user-ajaxtable');
+Route::get('export',[App\Http\Controllers\UserController::class,'exportUsers'])->name('export');
+Route::get('export-csv',[App\Http\Controllers\UserController::class,'exportCsvUsers'])->name('export-csv');
+Route::get('export-pdf',[App\Http\Controllers\UserController::class,'exportPdfUsers'])->name('export-pdf');
 
 Auth::routes();
 
