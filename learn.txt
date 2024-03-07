@@ -17,3 +17,5 @@
 	2. create model 
 	3. create factory
 	4. query in DatabseSeeder class
+
+6/3/2024
